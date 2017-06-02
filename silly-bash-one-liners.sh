@@ -5,4 +5,4 @@ ipconfig /all > /tmp/foo && head -$(grep -n "Ethernet adapter Local Area Connect
 
 
 # Create a large text file, but unlike using truncate or dd if=/dev/(u)random of=blah the file contains only printible characters.
-echo "all ur base r belong to us" >> blah && size=`ls -l blah | awk '{ print $5 }'` && while [ $size -lt 2621440000 ]; do cat blah >> blah && size=`ls -l blah | awk '{ print $5 }'`; done;
+echo "all ur base r belong to us" >> blah && size=`ls -l blah | awk '{ print $5 }'` && while [ $size -lt 2621440000 ]; do cp blah blah.tmp && cat blah.tmp >> blah && rm blah.tmp && size=`ls -l blah | awk '{ print $5 }'`; done;
